@@ -16,5 +16,7 @@ RUN npm run build
 
 #second phase for NGINX
 FROM nginx
+# this container has to mapped with outside container, as elastic bean look for this command in Prod docker file
+EXPOSE 80
 # I want to copy over something from that other phase into html file. 
 COPY --from=build  /app/build /usr/share/nginx/html
